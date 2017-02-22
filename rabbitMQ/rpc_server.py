@@ -11,7 +11,7 @@ import dlib
 
 BUFFER_SIZE = 1024
 HEAD_STRUCT = '!128sIq32s'   # Structure of file head
-hostip = '192.168.5.135'
+hostip = '10.42.0.1'
 
 credential = pika.PlainCredentials('encore' , 'encore')
 
@@ -24,8 +24,8 @@ channel.queue_declare(queue='upload_queue')
 
 def upload_file(s):
     context = ssl.create_default_context(ssl.Purpose.CLIENT_AUTH)
-    context.load_cert_chain(certfile="/home/encore/Documents/iov/openssl/server.crt", keyfile="/home/encore/Documents/iov/openssl/server.key" , password="iovpro")
-    context.load_verify_locations("/home/encore/Documents/iov/openssl/ca.crt")
+    context.load_cert_chain(certfile="/home/encore/Documents/iov/iov/openssl/ca/intermediate/certs/iovserver.cert.pem", keyfile="/home/encore/Documents/iov/iov/openssl/ca/intermediate/private/iovserver.key.pem" , password="iovpro")
+    context.load_verify_locations("/home/encore/Documents/iov/iov/openssl/ca/intermediate/certs/intermediate.cert.pem")
     context.verify_mode = ssl.CERT_REQUIRED
     
     client_socket, client_address = s.accept()

@@ -1,4 +1,0 @@
-V	180109084825Z		01	unknown	/C=cn/ST=shanxi/O=ants/OU=ants/CN=iov-server/emailAddress=example@gmail.com
-V	180110063750Z		02	unknown	/C=cn/ST=shanxi/O=ants/OU=ants/CN=iov-client/emailAddress=example@gmail.com
-R	180110074745Z	170110120748Z	03	unknown	/C=cn/ST=shanxi/O=ants/OU=ants/CN=raspi/emailAddress=raspi@gmail.com
-V	180110120908Z		04	unknown	/C=cn/ST=shanxi/O=ants/OU=ants/CN=raspi/emailAddress=raspi@gmail.com
