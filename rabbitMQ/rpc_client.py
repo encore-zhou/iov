@@ -15,7 +15,7 @@ FILE_SIZE = os.path.getsize(FILE_NAME)
 HEAD_STRUCT = '!128sIq32s'  # Structure of file head
 hostip = "192.168.5.135"
 CERTPATH='/home/pi/iov/openssl/'
-
+#
 class FibonacciRpcClient(object):
     def __init__(self):
         credential = pika.PlainCredentials('encore' , 'encore')

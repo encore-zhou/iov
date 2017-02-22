@@ -24,8 +24,8 @@ channel.queue_declare(queue='upload_queue')
 
 def upload_file(s):
     context = ssl.create_default_context(ssl.Purpose.CLIENT_AUTH)
-    context.load_cert_chain(certfile="/home/encore/Documents/iov/iov/openssl/ca/intermediate/certs/iovserver.cert.pem", keyfile="/home/encore/Documents/iov/iov/openssl/ca/intermediate/private/iovserver.key.pem" , password="iovpro")
-    context.load_verify_locations("/home/encore/Documents/iov/iov/openssl/ca/intermediate/crl/intermediate.crl.pem")
+    context.load_cert_chain(certfile="/home/encore/Documents/iov/iov/openssl/server.crt", keyfile="/home/encore/Documents/iov/iov/openssl/server.key" , password="iovpro")
+    context.load_verify_locations("/home/encore/Documents/iov/iov/openssl/ca.crt")
     context.verify_mode = ssl.CERT_REQUIRED
     
     client_socket, client_address = s.accept()
