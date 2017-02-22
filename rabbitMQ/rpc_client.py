@@ -13,10 +13,10 @@ BUFFER_SIZE = 1024
 FILE_NAME = sys.argv[1]   # Change to your file
 FILE_SIZE = os.path.getsize(FILE_NAME)
 HEAD_STRUCT = '!128sIq32s'  # Structure of file head
-hostip = "10.42.0.1"
+hostip = "192.168.5.135"
 CERTPATH='/home/pi/iov/openssl/'
 
-class QueueJob(object):
+class FibonacciRpcClient(object):
     def __init__(self):
         credential = pika.PlainCredentials('encore' , 'encore')
 
@@ -49,10 +49,10 @@ class QueueJob(object):
             self.connection.process_data_events()
         return int(self.response)
 
-qb = QueueJob()
+fibonacci_rpc = FibonacciRpcClient()
 
 print(" [x] Requesting upload file")
-response = qb.call(30)
+response = fibonacci_rpc.call(30)
 # print(" [.] Got server port:%r" % response)
 
 #Calculate MD5
@@ -73,7 +73,7 @@ print "file size:",FILE_SIZE
 file_head = struct.pack(HEAD_STRUCT, fn, len(fn), FILE_SIZE, md5_code.hexdigest())
 
 context = ssl.create_default_context(ssl.Purpose.SERVER_AUTH)
-context.load_cert_chain(certfile=os.path.join(CERTPATH,'raspi.crt'), keyfile=os.path.join(CERTPATH , 'raspi.key'), password="iovpro")
+context.load_cert_chain(certfile=os.path.join(CERTPATH,'client.crt'), keyfile=os.path.join(CERTPATH , 'client.key'), password="iovpro")
 context.load_verify_locations(os.path.join(CERTPATH , 'ca.crt'))
 context.verify_mode = ssl.CERT_REQUIRED
 

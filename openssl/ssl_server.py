@@ -1,12 +1,12 @@
 import socket, ssl, time ,pprint 
   
 context = ssl.create_default_context(ssl.Purpose.CLIENT_AUTH)
-context.load_cert_chain(certfile="/home/encore/Documents/iov/openssl/server.crt", keyfile="/home/encore/Documents/iov/openssl/server.key" , password="iovpro")
-context.load_verify_locations("/home/encore/Documents/iov/openssl/ca.crt")
+context.load_cert_chain(certfile="/home/pi/iov/openssl/server.crt", keyfile="/home/pi/iov/openssl/server.key" , password="iovpro")
+context.load_verify_locations("/home/pi/iov/openssl/ca.crt")
 context.verify_mode = ssl.CERT_REQUIRED  
 bindsocket = socket.socket()  
 print( "socket create success" )  
-bindsocket.bind(('10.42.0.1', 10023))  
+bindsocket.bind(('10.42.0.23', 10023))  
 print( "socket bind success" )  
 bindsocket.listen(5)  
 print( "socket listen success" )  

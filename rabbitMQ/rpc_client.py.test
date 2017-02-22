@@ -12,7 +12,7 @@ FILE_NAME = sys.argv[1]   # Change to your file
 FILE_SIZE = os.path.getsize(FILE_NAME)
 HEAD_STRUCT = '!128sIq32s'  # Structure of file head
 
-class QueueJob(object):
+class FibonacciRpcClient(object):
     def __init__(self):
         credential = pika.PlainCredentials('encore' , 'encore')
 
@@ -45,7 +45,7 @@ class QueueJob(object):
             self.connection.process_data_events()
         return int(self.response)
 
-fibonacci_rpc = QueueJob()
+fibonacci_rpc = FibonacciRpcClient()
 
 print(" [x] Requesting upload file")
 response = fibonacci_rpc.call(30)
@@ -78,11 +78,11 @@ try:
     while(send_size < FILE_SIZE):
         if(FILE_SIZE - send_size < BUFFER_SIZE):
             file_data = fr.read(FILE_SIZE - send_size)
-            # send_size = FILE_SIZE
+            send_size = FILE_SIZE
         else:
             file_data = fr.read(BUFFER_SIZE)
-            # send_size += BUFFER_SIZE
-        send_size += sock.send(file_data)
+            send_size += BUFFER_SIZE
+        sock.send(file_data)
     print "Send success!"
     print "MD5 : %s" % md5_code.hexdigest()
 
