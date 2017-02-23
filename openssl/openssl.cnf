@@ -126,7 +126,7 @@ string_mask = utf8only
 
 [ req_distinguished_name ]
 countryName			= Country Name (2 letter code)
-countryName_default		= AU
+countryName_default		= CN
 countryName_min			= 2
 countryName_max			= 2
 
