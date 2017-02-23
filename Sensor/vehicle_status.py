@@ -11,4 +11,4 @@ class vehicle_status(rpc_server):
 		print response
 		return (True, "success")
 
-factory = vehicle_status("encore", "encore", "127.0.0.1", "sensor_data")
+factory = vehicle_status("iov", "iovpro", "127.0.0.1", "sensor_data")
