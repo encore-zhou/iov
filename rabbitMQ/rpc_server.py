@@ -10,10 +10,13 @@ class rpc_server(object):
 
         credential = pika.PlainCredentials(self.rabbit_user, self.rabbit_passwd)
         
-        connection = pika.BlockingConnection(pika.ConnectionParameters(
+        #connection = pika.BlockingConnection(pika.ConnectionParameters(
                 host=self.hostip , port=5671 ,credentials=credential , ssl = True))
         
-        self.channel = connection.channel()
+        connection = pika.BlockingConnection(pika.ConnectionParameters(
+                host=self.hostip ,credentials=credential))
+        
+	self.channel = connection.channel()
         
         self.channel.queue_declare(queue=self.queuename)
     
