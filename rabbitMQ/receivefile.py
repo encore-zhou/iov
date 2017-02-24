@@ -19,8 +19,8 @@ class receivefile(rpc_server):
     
     def upload_file(self, s):
         context = ssl.create_default_context(ssl.Purpose.CLIENT_AUTH)
-        context.load_cert_chain(certfile="/home/encore/Documents/iov/iov/openssl/server.crt", keyfile="/home/encore/Documents/iov/iov/openssl/server.key" , password="iovpro")
-        context.load_verify_locations("/home/encore/Documents/iov/iov/openssl/ca.crt")
+        context.load_cert_chain(certfile="/home/ubuntu/iov/openssl/server.crt", keyfile="/home/ubuntu/iov/openssl/server.key" , password="iovpro")
+        context.load_verify_locations("/home/ubuntu/iov/openssl/ca.crt")
         context.verify_mode = ssl.CERT_REQUIRED
         # print "waiting for connection!"
         client_socket, client_address = s.accept()
@@ -91,5 +91,5 @@ class receivefile(rpc_server):
         return (True, str(port))
     
 
-rpc = receivefile("encore", "encore", hostip, "upload_queue")
+rpc = receivefile("iov", "iovpro", hostip, "upload_queue")
 rpc.start()
