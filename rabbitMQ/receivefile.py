@@ -6,7 +6,7 @@ import hashlib
 import ssl
 import pprint
 import time
-import dlib
+#import dlib
 from rpc_server import rpc_server
 
 BUFFER_SIZE = 1024
