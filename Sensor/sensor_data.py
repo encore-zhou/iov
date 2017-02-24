@@ -37,5 +37,5 @@ class sensor_data(rpc_client):
 			time.sleep(0.8)
 		return
 
-factory = sensor_data("encore", "encore", "127.0.0.1", "sensor_data", serialport)
+factory = sensor_data("iov", "iovpro", "118.89.234.177", "sensor_data", serialport)
 factory.processing_data()
