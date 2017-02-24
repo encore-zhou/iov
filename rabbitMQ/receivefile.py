@@ -6,13 +6,14 @@ import hashlib
 import ssl
 import pprint
 import time
+import logging
 #import dlib
 from rpc_server import rpc_server
 
 BUFFER_SIZE = 1024
 HEAD_STRUCT = '!128sIq32s'   # Structure of file head
 hostip = '127.0.0.1'
-
+logging.basicConfig(level=logging.INFO)
 class receivefile(rpc_server):
     def __init__(self, username, passwd, hostip, queuename):
         super(receivefile, self).__init__(username, passwd, hostip, queuename)
