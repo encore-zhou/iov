@@ -16,7 +16,7 @@ class sensor_data(rpc_client):
 	# def do_something(self, response):
 	# 	return True
 	
-	def processing_data():
+	def processing_data(self):
 		ser=serial.Serial(self.serialport, baudrate=115200, timeout=.1, rtscts=0)
 		while 1:
 			rawdata = ser.read(256)
@@ -33,7 +33,7 @@ class sensor_data(rpc_client):
 				nums[i] = float(nums[i])
 			jsonFormat = {'acx': nums[0],'acy':nums[1] ,'acz':nums[2] ,'grx':nums[3] ,'gry':nums[4] ,'grz':nums[5] ,'agx':nums[6] ,'agy':nums[7] ,'agz':nums[8] ,'mag':nums[9] ,'pap':nums[10] ,'php':nums[11] ,'lng':nums[12] ,'lat':nums[13] ,'gph':nums[14] ,'gpv':nums[15] ,'t':ticks}
 			print jsonFormat
-			self.start(jsonFormat)
+			self.start(str(jsonFormat))
 			time.sleep(0.8)
 		return
 
