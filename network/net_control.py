@@ -8,7 +8,7 @@ import os
 
 class networkControl(object):
 	"""docstring for networkControl"""
-	def __init__(self, serialport, baudrate=115200, timeout=.1, rtscts=0):
+	def __init__(self, serialport, baudrate=115200, timeout=0.1, rtscts=0):
 		super(networkControl, self).__init__()
 		self.serialport = serialport
 		self.baudrate = baudrate
@@ -19,16 +19,20 @@ class networkControl(object):
 		connected = False
 		checktime = 3
 		while (not connected and checktime > 0):
-			connected = os.system('ping 8.8.8.8 -c 3')
-			checktime--
+			connected = os.system('ping 8.8.8.8 -qc 3')
+			checktime -=1
 		if connected:
 			print 'ping fail'
 		else:
 			print 'ping ok'
-		return connected
+		return not connected
 
 	def connect4G(self):
-		ser = serial.Serial(self.serialport, self.baudrate=115200, self.timeout=.1, self.rtscts=0)
+		print "serialport:",self.serialport
+		print "baudrate:",self.baudrate
+		print "timeout:",self.timeout
+		print "rtscts:",self.rtscts
+		ser = serial.Serial(self.serialport, baudrate=self.baudrate, timeout=self.timeout, rtscts=self.rtscts)
 
 		ser.write(b'ATE1\r')
 		response = ser.read(256)
@@ -68,7 +72,7 @@ if __name__ == '__main__':
 	parser.add_argument('-r', dest='rtscts',default=0,type=int, help='set rtscts to serialport')
 	args = parser.parse_args()
 
-	nc = networkControl()
+	nc = networkControl(args.serialport, args.baudrate, args.timeout, args.rtscts)
 	print " [x]check network connection"
 	connected = nc.checkNetConnect()
 	if connected:
