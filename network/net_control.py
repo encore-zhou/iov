@@ -3,7 +3,7 @@
 import serial
 import time
 import sys
-
+import argparse
 
 ser=serial.Serial('/dev/ttyUSB1', baudrate=115200, timeout=.1, rtscts=0)
 
