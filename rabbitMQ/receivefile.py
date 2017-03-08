@@ -10,7 +10,7 @@ import logging
 #import dlib
 from rpc_server import rpc_server
 import argparse
-
+import os
 
 BUFFER_SIZE = 1024
 HEAD_STRUCT = '!128sIq32s'   # Structure of file head
@@ -50,7 +50,8 @@ class receivefile(rpc_server):
             print "file info:"
             print "file name:",file_name
             print "file size:",file_size
-            filename = os.path.join(self.dir, file_name)
+            file_name = os.path.join(self.dir, file_name)
+            print file_name
             fw = open(file_name, 'wb')
         
             recv_size = 0
@@ -74,6 +75,7 @@ class receivefile(rpc_server):
             print "  Recevie MD5 : %s" %md5_recv
             print "Calculate MD5 : %s" % md5_cal.hexdigest()
             fw.close()
+            print "save file to %s" %file_name
     
         finally:  
             connstream.shutdown(socket.SHUT_RDWR)  

@@ -25,3 +25,16 @@ Traceback (most recent call last):
 TypeError: __init__() got an unexpected keyword argument 'help'
 INFO:pika.adapters.base_connection:Connecting to 127.0.0.1:5671 with SSL
 INFO:pika.adapters.base_connection:Connecting to 127.0.0.1:5671 with SSL
+Unhandled exception in thread started by <bound method receivefile.upload_file of <__main__.receivefile object at 0xb6c10e0c>>
+ [x] Awaiting RPC requests
+ [.] upload request(this is the message!)
+connection address: ('1.85.33.68', 12008)
+file info:
+file name: hello_rpc
+file size: 21
+Traceback (most recent call last):
+  File "./rabbitMQ/receivefile.py", line 53, in upload_file
+    filename = os.path.join(self.dir, file_name)
+NameError: global name 'os' is not defined
+INFO:pika.adapters.base_connection:Connecting to 127.0.0.1:5671 with SSL
+INFO:pika.adapters.base_connection:Connecting to 127.0.0.1:5671 with SSL
