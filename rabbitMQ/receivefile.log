@@ -1,0 +1,17 @@
+INFO:pika.adapters.base_connection:Connecting to 127.0.0.1:5671 with SSL
+WARNING:pika.adapters.base_connection:Connection to 127.0.0.1:5671 failed: [Errno 111] Connection refused
+WARNING:pika.connection:Could not connect, 0 attempts left
+Traceback (most recent call last):
+  File "./rabbitMQ/receivefile.py", line 96, in <module>
+    rpc = receivefile("iov", "iovpro", hostip, "upload_queue")
+  File "./rabbitMQ/receivefile.py", line 20, in __init__
+    super(receivefile, self).__init__(username, passwd, hostip, queuename)
+  File "/home/pi/iov/rabbitMQ/rpc_server.py", line 14, in __init__
+    host=self.hostip , port=5671 ,credentials=credential , ssl = True))
+  File "/usr/local/lib/python2.7/dist-packages/pika/adapters/blocking_connection.py", line 339, in __init__
+    self._process_io_for_connection_setup()
+  File "/usr/local/lib/python2.7/dist-packages/pika/adapters/blocking_connection.py", line 374, in _process_io_for_connection_setup
+    self._open_error_result.is_ready)
+  File "/usr/local/lib/python2.7/dist-packages/pika/adapters/blocking_connection.py", line 395, in _flush_output
+    raise exceptions.ConnectionClosed()
+pika.exceptions.ConnectionClosed

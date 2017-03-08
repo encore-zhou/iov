@@ -15,7 +15,8 @@ def main():
 	# initial receivefile.py
 	os.system('python ./rabbitMQ/receivefile.py >> ./rabbitMQ/receivefile.log 2>&1 &')
 
-	# initial picam.py
+	# initial net_control.py
+	os.system('python ./network/net_control.py >> ./network/net_control.log 2>&1 &')
 	pass
 
 if __name__ == '__main__':
