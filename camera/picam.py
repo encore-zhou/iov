@@ -1,12 +1,13 @@
 import time
-import picamera
+import os
+import sys
 
-with picamera.PiCamera() as camera:
-
-    camera.start_preview()
-
-    time.sleep(0)
-
-    camera.capture('/home/pi/Desktop/image.jpg')
-
-    camera.stop_preview()
+if  __name__ == '__main__':
+	path = os.path.abspath(os.curdir)
+	while 1:
+		ticks = time.strftime("%Y%m%d%H%M%S", time.localtime());
+		filename = ticks+'.jpg'
+		filename = os.path.join(path, 'pictures/'+filename)
+		os.system('raspistill -o '+filename)
+		# do something with the picture
+		time.sleep(10)	
