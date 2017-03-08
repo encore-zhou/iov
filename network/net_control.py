@@ -70,16 +70,19 @@ if __name__ == '__main__':
 	parser.add_argument('-b', dest='baudrate',default=115200,type=int, help='set baudrate to serialport')
 	parser.add_argument('-t', dest='timeout',default=.1,type=float, help='set timeout to serialport connection')
 	parser.add_argument('-r', dest='rtscts',default=0,type=int, help='set rtscts to serialport')
+	parser.add_argument('-i', dest='interval', default=60, type=int, help='time interval to check the network status')
 	args = parser.parse_args()
 
 	nc = networkControl(args.serialport, args.baudrate, args.timeout, args.rtscts)
-	print " [x]check network connection"
-	connected = nc.checkNetConnect()
-	if connected:
-		print " [.]network is connected"
-	else:
-		print " [x]cannot connect to network, try 4G connection..."
-		if nc.connect4G():
-			print " [.]connected to 4G network"
+	while 1:
+		print " [x]check network connection"
+		connected = nc.checkNetConnect()
+		if connected:
+			print " [.]network is connected"
 		else:
-			print " [x]failed to connection"
+			print " [x]cannot connect to network, try 4G connection..."
+			if nc.connect4G():
+				print " [.]connected to 4G network"
+			else:
+				print " [x]failed to connection"
+		time.sleep(args.interval)
