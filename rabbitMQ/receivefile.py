@@ -9,6 +9,7 @@ import time
 import logging
 #import dlib
 from rpc_server import rpc_server
+from argparse import ArgumentParser
 
 BUFFER_SIZE = 1024
 HEAD_STRUCT = '!128sIq32s'   # Structure of file head
@@ -91,6 +92,6 @@ class receivefile(rpc_server):
         # s.close()
         return (True, str(port))
     
-
-rpc = receivefile("iov", "iovpro", hostip, "upload_queue")
-rpc.start()
+if __name__ == '__main__':
+    rpc = receivefile("iov", "iovpro", hostip, "upload_queue")
+    rpc.start()
