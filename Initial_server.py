@@ -13,10 +13,7 @@ def main():
 	os.system('python ./sensor/vehicle_status.py >> ./sensor/vehicle_status.log 2>&1 &')	
 
 	# initial receivefile.py
-	os.system('python ./rabbitMQ/receivefile.py >> ./rabbitMQ/receivefile.log 2>&1 &')
-
-	# initial net_control.py
-	os.system('python ./network/net_control.py >> ./network/net_control.log 2>&1 &')
+	os.system('python ./rabbitMQ/receivefile.py ./rabbitMQ/filecaches/>> ./rabbitMQ/receivefile.log 2>&1 &')
 	pass
 
 if __name__ == '__main__':

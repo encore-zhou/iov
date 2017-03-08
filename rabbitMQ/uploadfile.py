@@ -7,6 +7,7 @@ import sys
 import ssl
 import pprint
 from rpc_client import rpc_client
+from argparse import ArgumentParser
 
 BUFFER_SIZE = 1024
 FILE_NAME = sys.argv[1]   # Change to your file
@@ -80,11 +81,16 @@ class uploadfile(rpc_client):
 
         return True
 
-
-rpc = uploadfile("iov" , "iovpro" , hostip , "upload_queue")
-
-print(" [x] Requesting upload file")
-result = rpc.start("this is the message!")
-print(" [x] Upload file success")
-# print(" [.] Got server port:%r" % response)
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser(description='upload file to the server')
+    parser.add_argument('-host', dest='hostip', default='118.89.234.177',help='host ip of the server')
+    args = parser.argparse()
+    
+    hostip = args.hostip;
+    rpc = uploadfile("iov" , "iovpro" , hostip , "upload_queue")
+    
+    print(" [x] Requesting upload file")
+    result = rpc.start("this is the message!")
+    print(" [x] Upload file success")
+    # print(" [.] Got server port:%r" % response)
 

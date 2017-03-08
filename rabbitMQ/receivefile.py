@@ -9,15 +9,16 @@ import time
 import logging
 #import dlib
 from rpc_server import rpc_server
-from argparse import ArgumentParser
+import argparse
 
 BUFFER_SIZE = 1024
 HEAD_STRUCT = '!128sIq32s'   # Structure of file head
 hostip = '127.0.0.1'
 logging.basicConfig(level=logging.INFO)
 class receivefile(rpc_server):
-    def __init__(self, username, passwd, hostip, queuename):
+    def __init__(self, username, passwd, hostip, queuename, dir):
         super(receivefile, self).__init__(username, passwd, hostip, queuename)
+        self.dir = dir
     
     def upload_file(self, s):
         context = ssl.create_default_context(ssl.Purpose.CLIENT_AUTH)
@@ -48,6 +49,7 @@ class receivefile(rpc_server):
             print "file info:"
             print "file name:",file_name
             print "file size:",file_size
+            filename = os.path.join(self.dir, file_name)
             fw = open(file_name, 'wb')
         
             recv_size = 0
@@ -93,5 +95,9 @@ class receivefile(rpc_server):
         return (True, str(port))
     
 if __name__ == '__main__':
-    rpc = receivefile("iov", "iovpro", hostip, "upload_queue")
+    parser = argparse.ArgumentParser(help='receive from the client')
+    parser.add_argument('dir', help='directory to save the files')
+    args = parser.argparse()
+
+    rpc = receivefile("iov", "iovpro", hostip, "upload_queue", args.dir)
     rpc.start()
