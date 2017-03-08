@@ -13,8 +13,8 @@ FILE_NAME = sys.argv[1]   # Change to your file
 FILE_SIZE = os.path.getsize(FILE_NAME)
 HEAD_STRUCT = '!128sIq32s'  # Structure of file head
 hostip = "118.89.234.177"
-#CERTPATH='/home/pi/iov/openssl/'
-CERTPATH='/home/encore/Documents/iov/iov/openssl/'
+CERTPATH='/home/pi/iov/openssl/'
+#CERTPATH='/home/encore/Documents/iov/iov/openssl/'
 
 class uploadfile(rpc_client):
     def __init__(self, username, passwd, hostip, queuename):
