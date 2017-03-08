@@ -15,3 +15,13 @@ Traceback (most recent call last):
   File "/usr/local/lib/python2.7/dist-packages/pika/adapters/blocking_connection.py", line 395, in _flush_output
     raise exceptions.ConnectionClosed()
 pika.exceptions.ConnectionClosed
+Traceback (most recent call last):
+  File "./rabbitMQ/receivefile.py", line 98, in <module>
+    parser = argparse.ArgumentParser(help='receive from the client')
+TypeError: __init__() got an unexpected keyword argument 'help'
+Traceback (most recent call last):
+  File "./rabbitMQ/receivefile.py", line 98, in <module>
+    parser = argparse.ArgumentParser(help='receive from the client')
+TypeError: __init__() got an unexpected keyword argument 'help'
+INFO:pika.adapters.base_connection:Connecting to 127.0.0.1:5671 with SSL
+INFO:pika.adapters.base_connection:Connecting to 127.0.0.1:5671 with SSL

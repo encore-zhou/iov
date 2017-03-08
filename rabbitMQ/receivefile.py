@@ -11,6 +11,7 @@ import logging
 from rpc_server import rpc_server
 import argparse
 
+
 BUFFER_SIZE = 1024
 HEAD_STRUCT = '!128sIq32s'   # Structure of file head
 hostip = '127.0.0.1'
@@ -95,9 +96,9 @@ class receivefile(rpc_server):
         return (True, str(port))
     
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser(help='receive from the client')
+    parser = argparse.ArgumentParser(description='receive from the client')
     parser.add_argument('dir', help='directory to save the files')
-    args = parser.argparse()
+    args = parser.parse_args()
 
     rpc = receivefile("iov", "iovpro", hostip, "upload_queue", args.dir)
     rpc.start()

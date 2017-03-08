@@ -1,0 +1,3 @@
+usage: net_control.py [-h] -s SERIALPORT [-b BAUDRATE] [-t TIMEOUT]
+                      [-r RTSCTS] [-i INTERVAL]
+net_control.py: error: argument -s is required

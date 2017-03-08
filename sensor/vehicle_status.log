@@ -114,4 +114,7 @@ KeyboardInterrupt
 {'pap': 96719.0, 'php': 390.7, 'gph': 0.0, 'mag': 176.0, 'gpv': 0.0, 'grz': -0.061, 'grx': 0.0, 'gry': 0.0, 'agz': 113.373, 'agy': 2.648, 'agx': 3.4, 'lat': 0.00446, 'acz': 1.034, 'acy': 0.062, 'acx': -0.048, 'lng': 0.01115, 't': '2017-03-08 14:55:26'}
 {'pap': 96718.0, 'php': 390.7, 'gph': 0.0, 'mag': 177.0, 'gpv': 0.0, 'grz': 0.0, 'grx': -0.061, 'gry': 0.061, 'agz': 113.373, 'agy': 2.67, 'agx': 3.373, 'lat': 0.00446, 'acz': 1.034, 'acy': 0.061, 'acx': -0.048, 'lng': 0.01115, 't': '2017-03-08 14:55:27'}
 {'pap': 96717.0, 'php': 390.8, 'gph': 0.0, 'mag': 177.0, 'gpv': 0.0, 'grz': -0.061, 'grx': -0.061, 'gry': 0.061, 'agz': 113.379, 'agy': 2.692, 'agx': 3.433, 'lat': 0.00446, 'acz': 1.035, 'acy': 0.062, 'acx': -0.049, 'lng': 0.01115, 't': '2017-03-08 14:55:28'}
-{'pap': 96717.0, 'ph
+{'pap': 96717.0, 'phTraceback (most recent call last):
+  File "./sensor/vehicle_status.py", line 3, in <module>
+    from rpc_server import rpc_server
+ImportError: No module named rpc_server
