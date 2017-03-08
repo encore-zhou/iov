@@ -99,8 +99,8 @@ def getRep(imgPath):
     return rep
 
 for (img1, img2) in itertools.combinations(args.imgs, 2):
-    img1 = "/home/encore/Documents/iov/opencv/lennon-1.jpg"
-    img2 = "/home/encore/Documents/iov/opencv/lennon-2.jpg"
+    #img1 = "/home/encore/Documents/iov/opencv/lennon-1.jpg"
+    #img2 = "/home/encore/Documents/iov/opencv/lennon-2.jpg"
     d = getRep(img1) - getRep(img2)
     print("Comparing {} with {}.".format(img1, img2))
     print(
