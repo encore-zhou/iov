@@ -19,7 +19,7 @@ class uploadfile(rpc_client):
     def __init__(self, username, passwd, hostip, queuename, filename):
         super(uploadfile, self).__init__(username, passwd, hostip, queuename)
         self.FILE_NAME = filename
-        self.FILE_SIZE = os.path.getsize(FILE_NAME)
+        self.FILE_SIZE = os.path.getsize(filename)
 
     def do_something(self, response):
         response = int(response)
